@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 //--2-- CONNECTION to Database
-mongoose.connect("mongodb+srv://victimcoin:WFVHhaSAbBeZLBwU@cluster0.zetd24p.mongodb.net/todolistDB");
+mongoose.connect(process.env.MONGO_URI);
 
 //--3-- SCHEMA Create a new schema
 const itemSchema = {
